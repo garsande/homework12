@@ -186,7 +186,7 @@ def fastapi_server():
     logger.info(f"Starting FastAPI server on port {base_port}...")
 
     process = subprocess.Popen(
-        ['uvicorn', 'app.main:app', '--host', '127.0.0.1', '--port', str(base_port)],
+        ['uvicorn', 'main:app', '--host', '127.0.0.1', '--port', str(base_port)],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True,
