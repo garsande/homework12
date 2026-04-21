@@ -174,7 +174,7 @@ def fastapi_server():
     is already in use, find another available port. Wait until the server is up
     before yielding its base URL.
     """
-    base_port = 8000
+    base_port = 8001
     server_url = f'http://127.0.0.1:{base_port}/'
 
     # Check if port is free; if not, pick an available port
