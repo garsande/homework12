@@ -43,13 +43,13 @@ def register_and_login(base_url: str, user_data: dict) -> dict:
 # ---------------------------------------------------------------------------
 # Health and Auth Endpoint Tests
 # ---------------------------------------------------------------------------
-def test1_health_endpoint(base_url: str):
+def test_health_endpoint(base_url: str):
     url = f"{base_url}/health"
     response = requests.get(url)
     assert response.status_code == 200, f"Expected status code 200 but got {response.status_code}. Response: {response.text}"
     assert response.json() == {"status": "ok"}, "Unexpected response from /health."
 
-def test1_user_registration(base_url: str):
+def test_user_registration(base_url: str):
     url = f"{base_url}/auth/register"
     payload = {
         "first_name": "Alice",
@@ -71,7 +71,7 @@ def test1_user_registration(base_url: str):
     assert data["is_active"] is True
     assert data["is_verified"] is False
 
-def test1_user_login(base_url: str):
+def test_user_login(base_url: str):
     reg_url = f"{base_url}/auth/register"
     login_url = f"{base_url}/auth/login"
     
@@ -134,7 +134,7 @@ def test1_user_login(base_url: str):
 # Calculations Endpoints Integration Tests
 # ---------------------------------------------------------------------------
 # Note: All calculation creation requests now use the /calculations endpoint (not /calculations/add)
-def test1_create_calculation_addition(base_url: str):
+def test_create_calculation_addition(base_url: str):
     user_data = {
         "first_name": "Calc",
         "last_name": "Adder",
@@ -157,7 +157,7 @@ def test1_create_calculation_addition(base_url: str):
     data = response.json()
     assert "result" in data and data["result"] == 15.5, f"Expected result 15.5, got {data.get('result')}"
 
-def test1_create_calculation_subtraction(base_url: str):
+def test_create_calculation_subtraction(base_url: str):
     user_data = {
         "first_name": "Calc",
         "last_name": "Subtractor",
@@ -181,7 +181,7 @@ def test1_create_calculation_subtraction(base_url: str):
     # Expected result: 10 - 3 - 2 = 5
     assert "result" in data and data["result"] == 5, f"Expected result 5, got {data.get('result')}"
 
-def test1_create_calculation_multiplication(base_url: str):
+def test_create_calculation_multiplication(base_url: str):
     user_data = {
         "first_name": "Calc",
         "last_name": "Multiplier",
@@ -205,7 +205,7 @@ def test1_create_calculation_multiplication(base_url: str):
     # Expected result: 2 * 3 * 4 = 24
     assert "result" in data and data["result"] == 24, f"Expected result 24, got {data.get('result')}"
 
-def test1_create_calculation_division(base_url: str):
+def test_create_calculation_division(base_url: str):
     user_data = {
         "first_name": "Calc",
         "last_name": "Divider",
@@ -229,7 +229,7 @@ def test1_create_calculation_division(base_url: str):
     # Expected result: 100 / 2 / 5 = 10
     assert "result" in data and data["result"] == 10, f"Expected result 10, got {data.get('result')}"
 
-def test1_list_get_update_delete_calculation(base_url: str):
+def test_list_get_update_delete_calculation(base_url: str):
     user_data = {
         "first_name": "Calc",
         "last_name": "CRUD",
